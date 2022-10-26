@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import ProductiveBlock from "./ProductiveBlock";
 import RestBlock from "./RestBlock";
@@ -13,7 +14,12 @@ export default function Timers() {
     const [restActive, setRestActive] = useState(false);
     const [pause, setPause] = useState(false);
 
-    let roundCompleteAudio = new Audio("/round-finished.mp3");
+    const [roundCompleteAudio, setRoundCompleteAudio] = useState<HTMLAudioElement|null>(null)
+
+    useEffect(() => {
+        // set up audio
+        setRoundCompleteAudio(new Audio("/round-finished.mp3"));
+    }, [])
 
     const toggle = () => {
         setProductiveActive(!productiveActive);
@@ -26,13 +32,15 @@ export default function Timers() {
     function productiveFinished() {
         setProductiveActive(false);
         setRestActive(true);
-        roundCompleteAudio.play();
+        if (roundCompleteAudio)
+            roundCompleteAudio.play();
     }
 
     function restFinished() {
         setRestActive(false);
         setProductiveActive(true);
-        roundCompleteAudio.play();
+        if (roundCompleteAudio)
+            roundCompleteAudio.play();
     }
 
 

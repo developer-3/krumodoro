@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Navbar() {
     return (
         <div className="w-full flex flex-row">
@@ -11,12 +13,14 @@ export default function Navbar() {
                 </a>
             </div>
             <div className="w-1/3 flex items-center justify-center">
-                <h1 className="text-2xl font-bold">krumodoro</h1>
+                <Link href="/">
+                    <h1 className="text-2xl font-bold">krumodoro</h1>
+                </Link>
             </div>
             <div className="w-1/3 flex items-center justify-end gap-6">
-                <a href="/profile">
+                <Link href="/profile">
                     <img src="/adam.jpg" className="w-[2rem] h-[2rem] rounded-full cursor-pointer" />
-                </a>
+                </Link>
             </div>
         </div>
     )
