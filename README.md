@@ -1,3 +1,3 @@
 # krumodoro
 
-a pomodoro timer built with reactjs and tailwindcss
+a pomodoro timer built with nextjs, reactjs and tailwindcss
