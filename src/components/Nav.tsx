@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Navbar() {
+    const { data: session } = useSession()
+
     return (
         <div className="w-full flex flex-row">
             <div className="w-1/3 flex items-center justify-start">
@@ -18,9 +21,15 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="w-1/3 flex items-center justify-end gap-6">
-                <Link href="/profile">
-                    <img src="/adam.jpg" className="w-[2rem] h-[2rem] rounded-full cursor-pointer" />
-                </Link>
+                { session ? 
+                    <Link href="/profile">
+                        <img src="/adam.jpg" className="w-[2rem] h-[2rem] rounded-full cursor-pointer" />
+                    </Link> 
+                :
+                   
+                    <button onClick={() => signIn()}>Sign in</button>
+                   
+                }
             </div>
         </div>
     )
