@@ -5,7 +5,7 @@ export default function Navbar() {
     const { data: session } = useSession()
 
     return (
-        <div className="w-full flex flex-row">
+        <div className="p-4 w-full flex flex-row bg-slate-200">
             <div className="w-1/3 flex items-center justify-start">
                 <a href="https://www.github.com/developer-3">
                     <img
